@@ -24,13 +24,11 @@ public:
     };
 
 
+    // invalid args, just for padding
     virtual ~IPfxGameObject() = 0;
-    virtual IPfxInstance* GetPfxInstance() = 0;
-    virtual void IPfxGameObject__Function02() = 0;
-    virtual void IPfxGameObject__Function03() = 0;
-    virtual void GetGameObjectId(SObjectID* result) = 0;
-    virtual CRttiTypeId* GetTypeId() = 0;
-    virtual bool IPfxGameObject__Function06() = 0;
-    virtual bool IPfxGameObject__Function07() = 0;
-    virtual void IPfxGameObject__Function08() = 0;
+    virtual IPfxInstance* GetIPfxInstance() = 0;
+    virtual void DoReactToHit() = 0;
+    virtual void OnBreak() = 0;
+    virtual void NotifyOutOfBroadphase() = 0;
+    virtual void OnOutOfBroadphase() = 0;
 };

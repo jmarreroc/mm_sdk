@@ -44,21 +44,23 @@ public:
     };
 
 
-
     virtual ~CPhysicsGameObject() = 0;
-    virtual void CPhysicsGameObject__Function01() = 0;
-    virtual void CPhysicsGameObject__Function02() = 0;
-    virtual void CPhysicsGameObject__Function03() = 0;
-    virtual void CPhysicsGameObject__Function04() = 0;
-    virtual void CPhysicsGameObject__Function05() = 0;
-    virtual void CPhysicsGameObject__Function06() = 0;
-    virtual void CPhysicsGameObject__Function07() = 0;
-    virtual void CPhysicsGameObject__Function08() = 0;
-    virtual void CPhysicsGameObject__Function09() = 0;
-    virtual void CPhysicsGameObject__Function10() = 0;
-    virtual void OnCollision(SCollisionInfo const*) = 0;
-    virtual void OnDamage(CDamageMsg&) = 0;
-    virtual void IsDamageable() = 0;
-    virtual void GetDragCoefficient() = 0;
-    virtual void ActivatePhysics() = 0;
-};
+
+    virtual bool GetPhysicsAABB(CAABox*) = 0;
+    virtual void SetKeyframedMotionState(bool) = 0;
+    virtual void SetNextKeyframeTransform(float, const CMatrix4f*, bool, float) = 0;
+    virtual bool HitByBullet() = 0;
+    virtual void HitByExplosion() = 0;
+    virtual void HitByFire(CPhysicsGameObject::SHitByFireData*) = 0;
+    virtual void CollideWithWater(const CVector3f*, const float, const CVector3f*, float) = 0;
+    virtual void OnCollision() = 0;
+    virtual void OnCollisionSliding() = 0;
+    virtual void OnCollisionRolling() = 0;
+    virtual void OnCollisionGeneric() = 0;
+    virtual bool IsDamageable() = 0;
+    virtual void SetMaterialOverride() = 0;
+    virtual void ClearMaterialOverride() = 0;
+    virtual void SetWaterLevel(float) = 0;
+    virtual CVector3f*  GetPointClosestTo(CVector3f* result, const CVector3f*, int) = 0;
+    virtual void InitBuoyancy() = 0;
+}; 

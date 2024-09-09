@@ -149,9 +149,7 @@ public:
 		return HookMgr::Call<CVector4f&>(0x1409DEA30, this, &res, &v);
 	}
 
-	matrix& RotationYawPitchRoll(float yaw, float pitch, float roll) {
-		return HookMgr::Call<matrix&>(0x1409EA970, this, yaw, pitch, roll);
-	}
+	CMETHOD(0x1409EA970, 0x0, matrix&, RotationYawPitchRoll(float yaw, float pitch, float roll), yaw, pitch, roll)
 
 	void Identity()
 	{
@@ -196,6 +194,8 @@ public:
 
 
 	CMETHODV(0x1409EA850, 0x1429BE740, CVector3f&, ToEulerXYZ())
+	CMETHOD(0x1409EA3F0, 0x1429BE740, matrix&, FromEulerXYZ(CVector3f const& v), &v)
+	CMETHOD(0x1409EC760, 0x1429C0EE0, void, ToEuler(float& x, float& y, float& z), &x, &y, &z)
 
 	const static matrix identity;
 };
@@ -230,8 +230,9 @@ public:
 	}
 
 	CMETHOD(0x1409EF470, 0x1429C3D30, CQuaternion&, FromEulerXYZ(CVector3f const& euler), euler)
+	CMETHOD(0x1409EF030, 0x1429C38D0, CQuaternion&, FromEuler(float roll, float pitch, float yaw), roll, pitch, yaw)
 
-	CVector3f& operator*(CVector3f const& v) {
+	CVector3f operator*(CVector3f const& v) {
 		CVector3f result;
 		CCALL(0x1409E1BA0, 0x1429B5340, CVector3f&, &result, &v);
 		return result;

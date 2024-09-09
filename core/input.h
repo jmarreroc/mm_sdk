@@ -18,11 +18,9 @@ namespace Input {
 	class CInputActionMap {
 	public:
 
-		/*float GetValue(CHashString const& action_hash) {
-			return HookMgr::Call<float>(0x140927740, this, action_hash.m_Hash);
-		}
+		CMETHOD(0x140927740, 0x1428DA580, float, GetValue(CHashString const& action_hash), action_hash.m_Hash)
 
-		void SetEnabled(bool enabled) {
+		/*void SetEnabled(bool enabled) {
 			return HookMgr::Call<void>(0x1409240F0, this, enabled);
 		}*/
 	};
@@ -34,13 +32,7 @@ namespace Input {
 		uintptr_t* vtable;
 		char _unk[104];
 
-		/*CInputActionMap* GetActionMap(CHashString const& id) {
-			return HookMgr::Call<CInputActionMap*>(0x140924140, this, &id);
-		}
-
-		CInputActionMap* CreateActionMap(CHashString const& id, int size, ELockedGamepadOrder locked_gamepad_order) {
-			return HookMgr::Call<CInputActionMap*>(0x1409340B0, this, &id, size, locked_gamepad_order);
-		}*/
+		CMETHOD(0x140924140, 0x1428D64B0, CInputActionMap*, GetActionMap(CHashString const& id), &id);
 	};
 
 	class CInputDeviceManager : public IInputDeviceManager

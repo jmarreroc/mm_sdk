@@ -15,10 +15,10 @@ public:
     virtual void SendOnDestroyEvent(CHashString) = 0;
 
     float GetHealth() {
-        return *(float*)((uintptr_t)this + 0x184); //0x1C?
+        return *(float*)((uintptr_t)this + 0x184);
     }
     void SetHealth(float fHealth) {
-        *(float*)((uintptr_t)this + 0x184) = fHealth; //0x1C?
+        *(float*)((uintptr_t)this + 0x184) = fHealth;
     }
     void SetInvulnerable(bool invulnerable) { m_Invulnerable = invulnerable; }
 

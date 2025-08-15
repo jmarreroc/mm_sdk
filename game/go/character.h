@@ -27,7 +27,12 @@ class CCharacter : public CDamageable, public NCharacterSystem::CCharacterBase, 
 public:
 	// SUS
 
-
+	float GetHealth() {
+		return *(float*)((uintptr_t)this + 0x184);
+	}
+	void SetHealth(float fHealth) {
+		*(float*)((uintptr_t)this + 0x184) = fHealth;
+	}
 	CMETHODV(0x140139A20, 0x141CD69B0, void, ForceNeutralState())
 	CMETHODV(0x1400EE860, 0x141C82910, CVehicle*, GetVehiclePtr())
 };
